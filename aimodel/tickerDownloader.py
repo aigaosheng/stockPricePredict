@@ -14,6 +14,7 @@ from db.dbManager import dbManager
 import pickle 
 import psycopg2
 from dataGetter.yfinance import tickers
+# import yfinance as yf
 import math
 from tqdm import tqdm, tnrange
 from datetime import datetime,timedelta
@@ -56,6 +57,7 @@ class tickerDownloader():
             dowload = tickers.Tickers([ticker_now])
             if start_ds is None or start_ds < end_ds:
                 hst = dowload.history(period=None,interval = interval, start=start_ds, end = end_ds, group_by=None, progress = False)
+                # hst = yf.download(tickers = ticker_now, interval = interval, start=start_ds, progress = False)
                 if hst.empty:
                     continue
                 try:
@@ -76,11 +78,12 @@ if __name__ == '__main__':
     # [1m, 2m, 5m, 15m, 30m, 60m, 90m, 1h, 1d, 5d, 1wk, 1mo, 3mo]
     download = tickerDownloader()
     market_name = 'nasdaq' #nyse, sse, sz
-    market_ticker_list = ['TQQQ', 'DX-Y.NYB', '^VIX',]#'XLE','XLP',]#, 'XLP', 'XLF',]#'GLD']# ]#'^TNX'] #, ]
+    market_ticker_list = ['TSLA', 'DX-Y.NYB', '^VIX',]#'XLE','XLP',]#, 'XLP', 'XLF',]#'GLD']# ]#'^TNX'] #, ]
     df = download.downloadYahoo(market_name, market_ticker_list, batch_size = 1, interval='1d')
+    print(df['TSLA'].tail(3))
     #
-    cache_file = '/home/gs/Work/fintek/aimodel/dev/raw_data.pkl'
-    with open(cache_file, 'wb') as fi:
-        pickle.dump(df, fi)
+    # cache_file = './raw_data.pkl'
+    # with open(cache_file, 'wb') as fi:
+    #     pickle.dump(df, fi)
 
     # print(df[market_ticker_list[0]].head(10))

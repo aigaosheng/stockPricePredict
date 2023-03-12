@@ -32,7 +32,7 @@ from pathlib import Path
 root_pth = str(Path(__file__).parent.absolute())
 # print(root_pth)
 
-MAX_TRIAL_TRAIN = 1
+MAX_TRIAL_TRAIN = 10
 
 def configure(args): #target_symbol, model_method, i_price_margin = 0.01, prefix = ''):
     if isinstance(args, dict):
@@ -212,7 +212,7 @@ def e2eBacktest(param, is_classifier = True):
         pred_df = None
         for target_price in ('Open', 'Close', 'High', 'Low'):
             save_model = param['forcast_model_save'].format(target_price=target_price, target_symbol=target_symbol)
-            learn_model = learnerRegressor()
+            learn_model = learnerRegressor(scale_price = 'log', n_lookback_feat = 3)
             if  not param['is_realtime']: 
                 if param['is_upgrade_model']:
                     result = learn_model.fit(target_price, data_feat_hist, data[target_symbol], save_model)                    
@@ -348,34 +348,22 @@ def run(args_me = None):
 
 
 if __name__ == '__main__':
-    # args = {}
-    # args['target'] = 'TQQQ'
-    # args['model'] = 'xgb'
-    # args['func'] = 'train'
-    # args['capital'] = 1000
-    # args['price_margin'] = 0.01
+    is_debug = False
+    if is_debug:
+        args = {}
+        args['target'] = 'TSLA'
+        args['model'] = 'xgb'
+        args['func'] = 'train'
+        args['capital'] = 1000
+        args['price_margin'] = 0.01
 
-    # param = configure(args)
-    # param['is_classifier'] = True #DO NOT Change
-    # param['is_realtime'] = False
-    # param['i_price_margin'] = 0.01
-    # param['split_ratio'] = {'train': 0.7, 'dev': 0.1, 'eval': 0.2}
-    # print(param)    
-    # i_cash = args.capital
-
-    # first_date = datetime.datetime.strptime('2022-08-01', '%Y-%m-%d') #datetime.datetime(2021, 1, 1) 
-    # last_date = datetime.datetime.strptime('2022-10-04', '%Y-%m-%d') #datetime.datetime(2022, 9, 30)
-    # param['is_classifier'] = True #DO NOT Change
-    # param['is_realtime'] = True #DO NOT Change
-    # param['split_ratio'] = {'train': 0.0, 'dev': 0.0, 'eval': 1.0}
-    # param['first_date'] = first_date
-    # param['last_date'] = last_date
-    # param['is_offline_strategy'] = True
-
-    # param['first_date'] = first_date
-    # param['last_date'] = last_date
-    # param['is_offline_strategy'] = True
-    # e2eBacktest(param)
- 
-    run()
+        param = configure(args)
+        param['is_classifier'] = True #DO NOT Change
+        param['is_realtime'] = False
+        param['i_price_margin'] = 0.01
+        param['split_ratio'] = {'train': 0.7, 'dev': 0.1, 'eval': 0.2}
+        print(param)
+        e2eBacktest(param)    
+    else:
+        run()
 
