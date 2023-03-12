@@ -1,0 +1,6 @@
+{
+      "metric": {
+            "eval": 0.39076923076923076
+      },
+      "save_prediction": "/home/gs/Work/fintek/aimodel/datas/TQQQ_xgb_predict_eval.csv"
+}

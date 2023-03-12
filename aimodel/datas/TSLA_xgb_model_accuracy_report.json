@@ -1,0 +1,6 @@
+{
+      "metric": {
+            "eval": 0.6015873015873016
+      },
+      "save_prediction": "/home/gs/Work/fintek/aimodel/datas/TSLA_xgb_predict_eval.csv"
+}
