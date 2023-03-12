@@ -212,7 +212,7 @@ def e2eBacktest(param, is_classifier = True):
         pred_df = None
         for target_price in ('Open', 'Close', 'High', 'Low'):
             save_model = param['forcast_model_save'].format(target_price=target_price, target_symbol=target_symbol)
-            learn_model = learnerRegressor(scale_price = 'log', n_lookback_feat = 3)
+            learn_model = learnerRegressor(scale_price = 'log', n_lookback_feat = 20)
             if  not param['is_realtime']: 
                 if param['is_upgrade_model']:
                     result = learn_model.fit(target_price, data_feat_hist, data[target_symbol], save_model)                    
