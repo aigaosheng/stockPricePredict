@@ -13,7 +13,7 @@ import logging
 from .melog import infome
 from .featureOpt import signalClassifier
 
-MAX_TRIAL_TRAIN = 2
+MAX_TRIAL_TRAIN = 10
 
 class learner():
     '''

@@ -32,7 +32,6 @@ from pathlib import Path
 root_pth = str(Path(__file__).parent.absolute())
 # print(root_pth)
 
-MAX_TRIAL_TRAIN = 10
 
 def configure(args): #target_symbol, model_method, i_price_margin = 0.01, prefix = ''):
     if isinstance(args, dict):
