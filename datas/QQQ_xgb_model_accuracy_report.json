@@ -1,6 +1,6 @@
 {
       "metric": {
-            "eval": 0.4034941763727121
+            "eval": 0.43837753510140404
       },
-      "save_prediction": "/home/gs/Work/stockPricePredict/datas/QQQ_xgb_predict_eval.csv"
+      "save_prediction": "/Users/shenggao/work/stockPricePredict/datas/QQQ_xgb_predict_eval.csv"
 }

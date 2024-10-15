@@ -1,0 +1,12 @@
+[ollama]
+model_name = "llama3.1:70b-instruct-q4_K_M"
+end_point = "http://100.84.186.114:8000"
+
+[chatgpt]
+model_name = "gpt-4o-mini"
+
+[backtest]
+symbol = ["AAPL"]
+dt_from = "2024-01-01"
+dt_to = "2024-08-29"
+args = {use_fundamental = true, use_news = true, use_analyst = true, source_price = "finnhub"}

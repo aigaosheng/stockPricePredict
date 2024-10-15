@@ -1,0 +1,101 @@
+[oscillators.rsi]
+args = {price = ["close"], length = 14, signal_indicators = true}
+desc = "Relative Strength Index (14)"
+
+[oscillators.stochrsi]
+args = {price = ["close"], length = 14, rsi_length = 14, k = 3, d = 3}
+desc = "Stochastic RSI Fast (3, 3, 14, 14)"
+
+[oscillators.stoch]
+args = {price = ["high", "low", "close"], k = 14, d = 3, smooth_k = 3}
+desc = "Stochastic Oscillator (14, 3, 3)"
+
+[oscillators.cci]
+args = {price = ["high", "low", "close"], length = 20}
+desc = "Commodity Channel Index (20)"
+
+[oscillators.adx]
+args = {price =["high", "low", "close"], length = 14, lensig = 14}
+desc="Average Directional Index (14)"
+
+[oscillators.ao]
+args = {price = ["high", "low"], fast = 5, slow = 34}
+desc="Awesome Oscillator (5, 34)"
+
+[oscillators.mom]
+args = {price = ["close"], length = 10}
+desc = "Momentum Indicator (10)"
+
+[oscillators.macd]
+args = {price = ["close"], fast = 12, slow = 26, signal = 9, signal_indicators = true}
+desc="MACD Level (12, 26, 9)"
+
+[oscillators.willr]
+column=["high","low","close"]
+args = {price = ["high", "low", "close"], length = 14}
+desc = "Williams Percent Range (14)"
+
+[oscillators.eri]
+args = {price=["high","low","close"], length = 13}
+desc = "Bears Power oscillator (Elder Ray Index) (13)"
+
+[oscillators.uo]
+args = {price = ["high","low","close"], fast = 7, medium = 14, slow = 28}
+desc = "Ultimate Oscillator (7, 14, 28)"
+
+[oscillators.bbands]
+args = {price = ["close"], length = 20, length_sig = 14, std = 2.0}
+desc = "Bollinger Bands (20, 2.0)"
+
+[moving_averages.sma]
+args = [{price = ["close"], length = 10, length_sig = 5},
+{price = ["close"], length = 20, length_sig = 10},
+{price = ["close"], length = 30, length_sig = 15},
+{price = ["close"], length = 50, length_sig = 25},
+{price = ["close"], length = 100, length_sig = 50},
+{price = ["close"], length = 200, length_sig = 100},
+]
+desc = ["Simple Moving Average (10)",
+"Simple Moving Average (20)",
+"Simple Moving Average (30)",
+"Simple Moving Average (50)",
+"Simple Moving Average (100)",
+"Simple Moving Average (200)",
+]
+
+[moving_averages.ema]
+args = [{price = ["close"], length = 10, length_sig = 5},
+{price = ["close"], length = 20, length_sig = 10},
+{price = ["close"], length = 30, length_sig = 15},
+{price = ["close"], length = 50, length_sig = 25},
+{price = ["close"], length = 100, length_sig = 50},
+{price = ["close"], length = 200, length_sig = 100},
+]
+desc = ["Exponential Moving Average (10)",
+"Exponential Moving Average (20)",
+"Exponential Moving Average (30)",
+"Exponential Moving Average (50)",
+"Exponential Moving Average (100)",
+"Exponential Moving Average (200)",
+]
+
+[moving_averages.vwma]
+args = {price = ["close", "volume"], length = 20, length_sig = 10}
+desc = "Volume Weighted Moving Average (20)"
+
+[moving_averages.hma]
+args = {price = ["close", "volume"], length = 9, length_sig = 5}
+desc = "Hull Moving Average (HMA) (9)"
+
+[moving_averages.ichimoku]
+args = {price = ["close", "high", "low"], tenkan = 9, kijun = 26, senkou = 52, include_chikou = false}
+desc = "Ichimoku Cloud (9, 26, 52, 26)"
+
+[pivots.PivotPoint]
+args = [{price = ["close", "high", "low"], method = "classic"},
+{price = ["close", "high", "low"], method = "fibonacci"},
+{price = ["close", "high", "low"], method = "woodie"},
+{price = ["close", "high", "low", "open"], method = "demark"},
+{price = ["close", "high", "low"], method = "camarilla"},
+]
+desc = ["Classic", "Fibonacci", "Woodie", "Demark", "Camarilla"]
